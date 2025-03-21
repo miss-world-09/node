@@ -6,16 +6,25 @@
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/server.js",
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Server",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/server.js"
+            "program": "${workspaceFolder}/server.js",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run OS Module",
+            "program": "${workspaceFolder}/osmodule.js",
+            "console": "integratedTerminal"
         }
     ]
 }
