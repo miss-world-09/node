@@ -1,15 +1,26 @@
-const {console}=require('console');
-const http=require('http');
+const http = require('http');
 
-const port= process.env.PORT||3000;
+const port = process.env.PORT || 3000;
 
-const server=http.createserver((req,res)=>{
-    console.log(req.url)
-    res.statusCode=200;
-    res.setHeader('Content-Type','text/html')
-    res.end('<h1>hi there</h1> <p>how are you</p>');
+const server = http.createServer((req, res) => {
+    console.log(`Requested URL: ${req.url}`); // Debugging
 
-})
-server.listen(port,()=>{
-    console.log(`server is listening to the port ${port}`);
+    res.setHeader('Content-Type', 'text/html');
+
+    if (req.url === '/') {
+        res.statusCode = 200;
+        res.end('<h1>Hi, nice to meet you.</h1> <p>Keep working hard!</p>');
+    } 
+    else if (req.url === '/about') {  // Ensure exact match with `/about`
+        res.statusCode = 200;
+        res.end('<h1>Keep going!</h1> <p>We shall meet tomorrow.</p>');
+    } 
+    else {
+        res.statusCode = 404; // Not found
+        res.end('<h1>404 Not Found</h1> <p>We will meet again.</p>');
+    }
+});
+
+server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 });
